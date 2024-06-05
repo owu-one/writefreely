@@ -399,9 +399,6 @@ func (h oauthHandler) viewOauthCallback(app *App, w http.ResponseWriter, r *http
 		if !i.Active(app.db) {
 			return impart.HTTPError{http.StatusNotFound, "Invite link has expired."}
 		}
-	} else if !app.cfg.App.OpenRegistration {
-		addSessionFlash(app, w, r, ErrUserNotFound.Error(), nil)
-		return impart.HTTPError{http.StatusFound, "/login"}
 	}
 
 	displayName := tokenInfo.DisplayName
