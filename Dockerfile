@@ -1,11 +1,11 @@
 # Build image
-FROM golang:1.21-alpine3.18 as build
+FROM golang:alpine as build
 
 LABEL org.opencontainers.image.source="https://github.com/writefreely/writefreely"
 LABEL org.opencontainers.image.description="WriteFreely is a clean, minimalist publishing platform made for writers. Start a blog, share knowledge within your organization, or build a community around the shared act of writing."
 
 RUN apk -U upgrade \
-    && apk add --no-cache nodejs npm make g++ git \
+    && apk add --no-cache grep nodejs npm make g++ git \
     && npm install -g less less-plugin-clean-css \
     && mkdir -p /go/src/github.com/writefreely/writefreely
 
@@ -30,7 +30,7 @@ RUN make build \
       /stage
 
 # Final image
-FROM alpine:3.18.4
+FROM alpine:latest
 
 RUN apk -U upgrade \
     && apk add --no-cache openssl ca-certificates

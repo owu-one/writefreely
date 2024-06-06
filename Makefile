@@ -1,5 +1,5 @@
-GITREV=`git describe | cut -c 2-`
-LDFLAGS=-ldflags="-s -w -X 'github.com/writefreely/writefreely.softwareVer=$(GITREV)'"
+APP_VERSION ?= $(shell grep -oP '(?<=softwareVer = ")[^"]*' app.go)
+LDFLAGS=-ldflags="-s -w -X 'github.com/writefreely/writefreely.softwareVer=$(APP_VERSION)'"
 
 GOCMD=go
 GOINSTALL=$(GOCMD) install $(LDFLAGS)
