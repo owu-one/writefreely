@@ -328,11 +328,11 @@ Sent to %recipient.to%. Unsubscribe: ` + p.Collection.CanonicalURL() + `email/un
 	}
 	m.AddTag("New post")
 
-	fontFam := "Lora, Palatino, Baskerville, serif"
+	fontFam := "Lora, Palatino, Baskerville, 'Source Han Serif SC VF', serif"
 	if p.IsSans() {
 		fontFam = `"Open Sans", Tahoma, Arial, sans-serif`
 	} else if p.IsMonospace() {
-		fontFam = `Hack, consolas, Menlo-Regular, Menlo, Monaco, monospace, monospace`
+		fontFam = `Hack, consolas, Menlo-Regular, Menlo, Monaco, 'Sarasa Mono SC', monospace, monospace`
 	}
 
 	// TODO: move this to a templated file and LESS-generated stylesheet
@@ -448,7 +448,7 @@ If you didn't subscribe to this site or you're not sure why you're getting this 
 	m.AddTag("Email Verification")
 
 	m.SetHtml(`<html>
-	<body style="font-family:Lora, 'Palatino Linotype', Palatino, Baskerville, 'Book Antiqua', 'New York', 'DejaVu serif', serif; font-size: 100%%; margin:1em 2em;">
+	<body style="font-family:Lora, 'Palatino Linotype', Palatino, Baskerville, 'Book Antiqua', 'New York', 'DejaVu serif', 'Source Han Serif SC VF', serif; font-size: 100%%; margin:1em 2em;">
 		<div style="font-size: 1.2em;">
 			<p>Confirm your subscription to <a href="` + c.CanonicalURL() + `">` + c.DisplayTitle() + `</a> to start receiving future posts:</p>
 			<p><a href="` + c.CanonicalURL() + `email/confirm/` + subID + `?t=` + token + `">Subscribe to ` + c.DisplayTitle() + `</a></p>

@@ -59,6 +59,8 @@ body#collection header nav.tabs a:first-child {
 		<!-- Add highlighting logic -->
 		{{template "highlighting" . }}
 
+		{{template "external-css" .}}
+		{{template "external-js" .}}
 	</head>
 	<body id="collection" itemscope itemtype="http://schema.org/WebPage">
 		{{template "user-navigation" .}}

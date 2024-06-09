@@ -13,8 +13,6 @@ package writefreely
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/mailgun/mailgun-go"
-	"github.com/writefreely/writefreely/spam"
 	"html/template"
 	"net/http"
 	"regexp"
@@ -22,6 +20,9 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/mailgun/mailgun-go"
+	"github.com/writefreely/writefreely/spam"
 
 	"github.com/gorilla/csrf"
 	"github.com/gorilla/mux"
@@ -1385,7 +1386,7 @@ func emailPasswordReset(app *App, toEmail, token string) error {
 	m := mailgun.NewMessage(app.cfg.App.SiteName+" <noreply-password@"+app.cfg.Email.Domain+">", "Reset Your "+app.cfg.App.SiteName+" Password", plainMsg, fmt.Sprintf("<%s>", toEmail))
 	m.AddTag("Password Reset")
 	m.SetHtml(fmt.Sprintf(`<html>
-	<body style="font-family:Lora, 'Palatino Linotype', Palatino, Baskerville, 'Book Antiqua', 'New York', 'DejaVu serif', serif; font-size: 100%%; margin:1em 2em;">
+	<body style="font-family:Lora, 'Palatino Linotype', Palatino, Baskerville, 'Book Antiqua', 'New York', 'DejaVu serif', 'Source Han Serif SC VF', serif; font-size: 100%%; margin:1em 2em;">
 		<div style="margin:0 auto; max-width: 40em; font-size: 1.2em;">
         <h1 style="font-size:1.75em"><a style="text-decoration:none;color:#000;" href="%s">%s</a></h1>
 		<p>We received a request to reset your password on %s. Please click the following link to continue:</p>
@@ -1433,7 +1434,7 @@ func loginViaEmail(app *App, alias, redirectTo string) error {
 	m.AddTag("Email Login")
 
 	m.SetHtml(fmt.Sprintf(`<html>
-	<body style="font-family:Lora, 'Palatino Linotype', Palatino, Baskerville, 'Book Antiqua', 'New York', 'DejaVu serif', serif; font-size: 100%%; margin:1em 2em;">
+	<body style="font-family:Lora, 'Palatino Linotype', Palatino, Baskerville, 'Book Antiqua', 'New York', 'DejaVu serif', 'Source Han Serif SC VF', serif; font-size: 100%%; margin:1em 2em;">
 		<div style="margin:0 auto; max-width: 40em; font-size: 1.2em;">
         <h1 style="font-size:1.75em"><a style="text-decoration:none;color:#000;" href="%s">%s</a></h1>
 		<p style="font-size:1.2em;margin-bottom:1.5em;text-align:center"><a href="%s/login?to=%s&with=%s">Log in to %s here</a>.</p>

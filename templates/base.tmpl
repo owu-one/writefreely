@@ -10,6 +10,8 @@
 		<meta name="application-name" content="{{.SiteName}}">
 		<meta name="application-url" content="{{.Host}}">
 		<meta property="og:site_name" content="{{.SiteName}}" />
+		{{template "external-css" .}}
+		{{template "external-js" .}}
 	</head>
 	<body {{template "body-attrs" .}}>
 		<div id="overlay"></div>

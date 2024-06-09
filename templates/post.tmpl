@@ -34,6 +34,9 @@
 		{{if .Author}}<meta property="article:author" content="https://{{.Author}}" />{{end}}
 		<!-- Add highlighting logic -->
 		{{template "highlighting" .}}
+
+		{{template "external-css" .}}
+		{{template "external-js" .}}
 	</head>
 	<body id="post">
 		<header>
