@@ -51,6 +51,14 @@ jobs:
           BUILDER_NODE_1_AUTH_TLS_CERT: ${{ secrets.ARM64_BUILDER_CERT }}
           BUILDER_NODE_1_AUTH_TLS_KEY: ${{ secrets.ARM64_BUILDER_KEY }}
 
+      # Set up QEMU for cross-building
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3.0.0
+
+      # Set up Docker Buildx
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3.0.0
+
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
       - name: Log into registry ${{ env.REGISTRY }}
